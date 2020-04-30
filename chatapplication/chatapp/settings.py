@@ -80,7 +80,8 @@ DATABASES = {
         'NAME': 'dockerdb',
         'USER': 'dockeruser',
         'PASSWORD':'Revanth@1998',
-#        'HOST': '*'
+        'HOST': 'database1',
+	'PORT': '5432',
     }
 }
 

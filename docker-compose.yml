@@ -6,7 +6,7 @@ services:
     hostname: database1
     container_name: database1
     ports:
-    - "5434:5432"
+    - "5432:5432"
     environment:
       POSTGRES_USER: dockeruser
       POSTGRES_PASSWORD: Revanth@1998
