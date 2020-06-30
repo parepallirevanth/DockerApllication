@@ -16,6 +16,9 @@ pipeline {
 				sh ''' #! /bin/bash
 				ssh -i /var/lib/jenkins/.ssh/id_rsa root@40.70.83.87 '
 				cd JenkinsPipeline
+				docker stop $(docker ps -a -q)
+				docker rm $(docker ps -a -q)
+				docker rmi jenkinspipeline_nginx:latest jenkinspipeline_chatapp:latest
 				docker-compose up -d
 				'
 				'''
@@ -25,19 +28,13 @@ pipeline {
 			steps { 
 				sh ''' #! /bin/bash
 				ssh -i /var/lib/jenkins/.ssh/id_rsa root@40.70.83.87 '
+				docker login -u revanthparepalli -p Reva@1998
+				docker push jenkinspipeline_chatapp:latest revanthparepalli/jenkinspipeline_chatapp:latest
 				'
 				'''
 			}
 		}
-		stage('Deploy') {
-			steps {
-				sh ''' #! /bin/bash
-				ssh -i /var/lib/jenkins/.ssh/id_rsa root@40.70.83.87 '
-				'
-				echo Deploy Successfull
-				'''
-			}
-		}
+		
 
 	}
 	post {
