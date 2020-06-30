@@ -4,8 +4,9 @@ pipeline {
 		stage('Clone Repository') {
 			steps {
 				sh ''' #! /bin/bash
-				ssh -i /var/lib/jenkins/.ssh/id_rsa root@40.70.83.87 
-                                sudo rm -f JenkinsPipeline
+				ssh -i /var/lib/jenkins/.ssh/id_rsa root@40.70.83.87 '
+                                sudo rm -f JenkinsPipeline 
+				'
 				scp -r /var/lib/jenkins/workspace/JenkinsPipeline root@40.70.83.87:
 				'''
 			}
