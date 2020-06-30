@@ -31,7 +31,7 @@ pipeline {
 		stage('Deploy') {
 			steps {
 				sh ''' #! /bin/bash
-				ssh -i /var/lib/jenkins/.ssh/id_rsa ubuntu@13.233.255.236 '
+				ssh -i /var/lib/jenkins/.ssh/id_rsa ubuntu@40.70.83.87 '
 				'
 				echo Deploy Successfull
 				'''
