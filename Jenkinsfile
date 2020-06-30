@@ -18,7 +18,7 @@ pipeline {
 				cd JenkinsPipeline
 				docker stop $(docker ps -a -q)
 				docker rm $(docker ps -a -q)
-				docker rmi jenkinspipeline_nginx:latest jenkinspipeline_chatapp:latest
+				docker rmi jenkinspipeline_nginx:latest jenkinspipeline_chatapp:latest revanthparepalli/jenkinspipeline_chatapp:latest 
 				docker-compose up -d
 				'
 				'''
