@@ -5,7 +5,7 @@ pipeline {
 			steps {
 				sh ''' #! /bin/bash
 				ssh -i /var/lib/jenkins/.ssh/id_rsa root@40.70.83.87 '
-                                sudo rm -f JenkinsPipeline 
+                                sudo rm -rf JenkinsPipeline 
 				'
 				scp -r /var/lib/jenkins/workspace/JenkinsPipeline root@40.70.83.87:
 				'''
