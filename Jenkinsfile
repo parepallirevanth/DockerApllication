@@ -1,23 +1,50 @@
 pipeline {
-    agent any
-    stages{  
-        stage('Build-image') {
-            steps {
-                sh ''' #!/bin/bash
-                  cd /var/lib/jenkins/workspace/chatapp/
-                 
-                  sudo docker-compose up -d 
-                
-                # pushing to the Docker-hub      
-                #  docker tag chatapp:$BUILD_NUMBER revanthparepalli/chatapp:$BUILD_NUMBER
-                #  docker push revanthparepalli/chatapp:$BUILD_NUMBER
-                # docker tag chatapp:$BUILD_NUMBER revanthparepalli/chatapp:JV1
-                # docker push revanthparepalli/chatapp:JV1
-                  
-                  '''  
-            }
-        }
-    }
-}  
- 
-   
+	agent any
+	stages {
+		stage('Clone Repository') {
+			steps {
+				sh ''' #! /bin/bash
+				ssh -i /var/lib/jenkins/.ssh/id_rsa root@40.70.83.87 
+
+				scp -r /var/lib/jenkins/workspace/JenkinsPipeline root@40.70.83.87:
+				'''
+			}
+		}
+		stage('Build Image') {
+			steps {
+				sh ''' #! /bin/bash
+				ssh -i /var/lib/jenkins/.ssh/id_rsa root@40.70.83.87 '
+				cd JenkinsPipeline
+				docker-compose up -d
+				'
+				'''
+			}
+		}
+		stage('Push Image') {
+			steps { 
+				sh ''' #! /bin/bash
+				ssh -i /var/lib/jenkins/.ssh/id_rsa root@40.70.83.87 '
+				'
+				'''
+			}
+		}
+		stage('Deploy') {
+			steps {
+				sh ''' #! /bin/bash
+				ssh -i /var/lib/jenkins/.ssh/id_rsa ubuntu@13.233.255.236 '
+				'
+				echo Deploy Successfull
+				'''
+			}
+		}
+
+	}
+	post {
+		always {
+			echo 'Stage is success'
+		}
+	}
+}
+
+
+
