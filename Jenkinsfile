@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh ''' #!/bin/bash
                   cd /var/lib/jenkins/workspace/chatapp/
-                  docker-compose build .
+                  #docker-compose build .
                   docker-compose up -d 
                 # pushing to the Docker-hub
                 #  docker login -u revanthparepalli -p Reva@1998    
