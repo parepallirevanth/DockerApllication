@@ -6,9 +6,10 @@ pipeline {
                 sh ''' #!/bin/bash
                   cd /var/lib/jenkins/workspace/chatapp/
                   #docker-compose build .
-                  sudo docker-compose up -d 
+                  docker login -u revanthparepalli -p Reva@1998
+                  docker-compose up -d 
                 # pushing to the Docker-hub
-                #  docker login -u revanthparepalli -p Reva@1998    
+                      
                 #  docker tag chatapp:$BUILD_NUMBER revanthparepalli/chatapp:$BUILD_NUMBER
                 #  docker push revanthparepalli/chatapp:$BUILD_NUMBER
                 # docker tag chatapp:$BUILD_NUMBER revanthparepalli/chatapp:JV1
