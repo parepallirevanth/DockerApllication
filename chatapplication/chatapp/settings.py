@@ -67,6 +67,10 @@ CHANNEL_LAYERS = {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
             "hosts": [('*', 6379)],
+#	 "BACKEND": "asgi_redis.RedisChannelLayer",
+#        "ROUTING": "???",
+#        "CONFIG": {
+#            "hosts": [("redis-channel-1", 6379), ("redis-channel-2", 6379)],
         },
     },
 }
