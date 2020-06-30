@@ -28,6 +28,7 @@ pipeline {
 			steps { 
 				sh ''' #! /bin/bash
 				ssh -i /var/lib/jenkins/.ssh/id_rsa root@40.70.83.87 '
+				sudo apt-get install pass gnupg2
 				docker login -u revanthparepalli -p Reva@1998
 				docker tag jenkinspipeline_chatapp:latest revanthparepalli/jenkinspipeline_chatapp:latest
 				docker push revanthparepalli/jenkinspipeline_chatapp:latest
