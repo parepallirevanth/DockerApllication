@@ -29,7 +29,7 @@ pipeline {
 			steps { 
 				sh ''' #! /bin/bash
 				ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/id_rsa RemoteJenkin@52.229.23.58 '
-				sudo apt-get install pass gnupg2
+				#sudo apt-get install pass gnupg2
 				docker login -u revanthparepalli -p Reva@1998
 				docker tag jenkinspipeline_chatapp:latest revanthparepalli/jenkinspipeline_chatapp:latest
 				docker push revanthparepalli/jenkinspipeline_chatapp:latest
