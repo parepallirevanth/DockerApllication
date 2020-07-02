@@ -1,7 +1,19 @@
 pipeline {
 	agent any
 	stages {
-		
+		stage('Sonarqube') {
+                  	environment {
+                       		scannerHome = tool 'sonar-scanner'
+                       	}
+                	steps {
+                   		withSonarQubeEnv('sonar') {
+                       		sh "${scannerHome}/bin/sonar-scanner"
+                   		}
+                   		timeout(time: 5, unit: 'MINUTES') {
+                       		waitForQualityGate abortPipeline: true
+				}
+                	}
+                }
 		stage('Clone Repository') {
 			steps {
 				sh ''' #! /bin/bash
