@@ -6,7 +6,7 @@ pipeline {
 			steps {
 				sh ''' #! /bin/bash
 				ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/id_rsa RemoteJenkin@52.229.23.58 '
-                                sudo rm -rf JenkinsPipeline 
+                                #sudo rm -rf JenkinsPipeline 
 				'
 				scp -r /var/lib/jenkins/workspace/JenkinsPipeline RemoteJenkin@52.229.23.58:
 				'''
