@@ -27,15 +27,12 @@ services:
     container_name: chatapp
     networks:
     - network
-    #depends_on:
     depends_on:
     - database1
-#    - redis
     restart: always
 
   nginx:
-    build:
-      context: ./nginx/
+    image: nginx
     ports:
     - "8000:80"
     hostname: nginx
@@ -44,22 +41,6 @@ services:
     depends_on:
     - chatapp
     restart: always
-
-#  redis:
-#    build:
-#      context: /home/revanth/DockerApplication/redis/
-#    ports:
-#    - "6379:6379"
-#    environment:
-#    - ALLOW_EMPTY_PASSWORD=yes
-#    networks:
-#    - network
-#    links:
-#    - database1
-#    volumes:
-#      - /path/to/your_redis.conf:/etc/redis/redis.conf
-#      - /path/to/redis-persistence:/var/lib/redis/
-#    restart: always
 
 networks:
   network:
